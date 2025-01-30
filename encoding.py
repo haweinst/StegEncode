@@ -167,7 +167,7 @@ if (not usinglzma):
         stbs[len(stabilizers) + i] = np.binary_repr(
             np.bitwise_xor(int('1' * lengthofcodeword, 2), int(stabilizers[i], 2)), width=lengthofcodeword)
     stabilizers = stbs
-print(stabilizers)
+#print(stabilizers)
 
 
 # define encoding and decoding methods for code

@@ -57,7 +57,7 @@ from lzma import FORMAT_XZ
 import numpy as np
 import scipy as sp
 
-lengthofcodeword = 5
+lengthofcodeword = 1
 loh = 5
 lenb = 1484
 bl = lenb - loh

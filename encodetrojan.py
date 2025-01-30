@@ -74,7 +74,7 @@ print(len(z))
 
 
 # start of 5 bit repetition code definition
-numreps = 5
+numreps = 2
 lengthofcodeword = numreps
 
 
@@ -128,7 +128,7 @@ if (not usinglzma):
         stbs[len(stabilizers) + i] = np.binary_repr(
             np.bitwise_xor(int('1' * lengthofcodeword, 2), int(stabilizers[i], 2)), width=lengthofcodeword)
     stabilizers = stbs
-print(stabilizers)
+#print(stabilizers)
 
 
 # define encoding and decoding methods for code
@@ -239,8 +239,8 @@ def counterr(q, v):
     return count
 
 
-print(len(msgbin))
-print(len(msgbin1))
-print(counterr(msgbin, msgbin1))
+#print(len(msgbin))
+#print(len(msgbin1))
+#print(counterr(msgbin, msgbin1))
 with open('binarystringmeasured.txt', 'w') as g:
     g.write(msgbin1)
