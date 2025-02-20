@@ -1,7 +1,7 @@
 usinglzma = False
 # add errors if desired
 errrate = 0
-
+numreps = 25
 import numpy as np
 from PIL import Image
 
@@ -38,7 +38,7 @@ def png_to_binary(file_path):
 
 # #above code only written by chatgpt
 image = Image.open('bw_trojan.png')
-new_image = image.resize((100, 100))
+new_image = image.resize((10, 10))
 new_image.save('resized.png')
 
 a, w, h = png_to_binary('resized.png')
@@ -74,7 +74,7 @@ print(len(z))
 
 
 # start of 5 bit repetition code definition
-numreps = 2
+
 lengthofcodeword = numreps
 
 
@@ -101,7 +101,8 @@ def lenstabs(nr, mw):
 
 mn = 0
 s = ''
-stabilizers = [None] * (lenstabs(numreps, maxweight))
+stabilizers = ['00000'] * (lenstabs(numreps, maxweight))
+#print(stabilizers)
 for i in range(0, maxweight):
     for k in range(0, numreps):
         if i == 0:
@@ -119,7 +120,7 @@ for i in range(0, maxweight):
             s += '0' * (numreps - k - 1)
             stabilizers[mn] = s
             mn = mn + 1
-
+#print(stabilizers)
 stabilizers[-1] = '0' * numreps
 if (not usinglzma):
     stbs = ['0'] * (2 * len(stabilizers))

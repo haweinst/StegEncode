@@ -1,4 +1,6 @@
 usinglzma = False
+numreps = 5
+
 import numpy as np
 from PIL import Image
 
@@ -44,21 +46,22 @@ def png_to_binary(file_path):
 # end chatgpt code
 
 image = Image.open('bw_trojan.png')
-new_image = image.resize((100, 100))
+new_image = image.resize((10, 10))
 new_image.save('resized.png')
 
 a, w, h = png_to_binary('resized.png')
-with open('simulated.txt', 'r') as f:
+with open('binarystringmeasured.txt', 'r') as f:
     ppp = f.read()
 
 measuredbits = ppp  # put whatever you measured here. should be a binary message
+print(len(measuredbits))
 import lzma
 from lzma import FORMAT_XZ
 import numpy as np
 import scipy as sp
 
-lengthofcodeword = 1
-loh = 5
+lengthofcodeword = numreps
+loh = numreps
 lenb = 1484
 bl = lenb - loh
 
@@ -86,7 +89,6 @@ if (usinglzma):
 
 messagedecoded = ""
 
-numreps = 5
 maxweight = int(numreps / 2)
 
 
@@ -99,7 +101,7 @@ def lenstabs(nr, mw):
 
 mn = 0
 s = ''
-stabilizers = [None] * (lenstabs(numreps, maxweight))
+stabilizers = ["0000"] * (lenstabs(numreps, maxweight))
 for i in range(0, maxweight):
     for k in range(0, numreps):
         if i == 0:
@@ -126,7 +128,6 @@ if (not usinglzma):
         stbs[len(stabilizers) + i] = np.binary_repr(
             np.bitwise_xor(int('1' * lengthofcodeword, 2), int(stabilizers[i], 2)), width=lengthofcodeword)
     stabilizers = stbs
-print(stabilizers)
 
 
 # define encoding and decoding methods for code
