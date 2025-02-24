@@ -64,13 +64,14 @@ with open('binarystringmeasured.txt', 'r') as f:
     ppp = f.read()
 
 measuredbits = ppp  # put whatever you measured here. should be a binary message
-
+print(len(measuredbits))
 import lzma
 from lzma import FORMAT_XZ
 import numpy as np
 import scipy as sp
 
 lengthofcodeword = 2 ** 3
+
 loh = 5
 lenb = 1484
 bl = lenb - loh

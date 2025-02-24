@@ -38,7 +38,7 @@ def png_to_binary(file_path):
 
 # #above code only written by chatgpt
 image = Image.open('bw_trojan.png')
-new_image = image.resize((100, 100))
+new_image = image.resize((25, 25))
 new_image.save('resized.png')
 
 a, w, h = png_to_binary('resized.png')

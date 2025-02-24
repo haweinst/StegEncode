@@ -44,20 +44,20 @@ def png_to_binary(file_path):
 # end chatgpt code
 
 image = Image.open('bw_trojan.png')
-new_image = image.resize((100, 100))
+new_image = image.resize((25, 25))
 new_image.save('resized.png')
 
 a, w, h = png_to_binary('resized.png')
-with open('simulated.txt', 'r') as f:
+with open('binarystringmeasured.txt', 'r') as f:
     ppp = f.read()
-
+len(ppp)
 measuredbits = ppp  # put whatever you measured here. should be a binary message
 import lzma
 from lzma import FORMAT_XZ
 import numpy as np
 import scipy as sp
 
-lengthofcodeword = 1
+lengthofcodeword = 5
 loh = 5
 lenb = 1484
 bl = lenb - loh
